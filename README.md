@@ -1,16 +1,20 @@
-Ceci est un template d'un README.md. Il sera updaté au fur et à mesure avec de la vraie information et ça sera bien, promis.
+#ScreenTest
 
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+Un site dédié à la génération et à l'exécution de quiz demandant à l'utilisateur de deviner de quel film / série / bande dessinée / etc. provient chaque image qui lui est montrée.
+Voici une liste non-exhaustive de fonctionnalités que l'on cherche à introduire dans ce projet :
+ - un système de tags pour classer les images et proposer des quiz à thème (par pays d'origine, par média, etc.)
+ - une page pour uploader de nouvelles images la/les réponse(s) associée(s)
+	- un outi de modération pour éviter les abus et vérifier la qualité des uploads
 
 ## Code Example
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+n/a
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+Mes principaux intérêts résident dans la culture populaire, notamment japonaise, avec tout ce que ça implique de jeux vidéo, de films, d'anime, de manga et de médias variés. Et tout comme il est agréable d'apprendre à connaître ces médias j'apprécie les jeux qui me permettent de tester ma culture. Ce projet permettra donc enfin d'avoir un outil pour se faire des quiz là-dessus.
 
 ## Installation
 
@@ -18,16 +22,12 @@ Provide code examples and explanations of how to get the project.
 
 ## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+n/a
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+n/a
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+n/a
