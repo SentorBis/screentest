@@ -20,7 +20,7 @@ Mes principaux intérêts résident dans la culture populaire, notamment japonai
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+Pour visualiser le site web dans son état actuel : http://htmlpreview.github.io/?https://github.com/SentorBis/screentest/blob/master/index.html
 
 ## API Reference
 
