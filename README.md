@@ -1,5 +1,7 @@
 #ScreenTest
 
+par Grégoire Labasse (#6607969)
+
 ## Synopsis
 
 Un site dédié à la génération et à l'exécution de quiz demandant à l'utilisateur de deviner de quel film / série / bande dessinée / etc. provient chaque image qui lui est montrée.

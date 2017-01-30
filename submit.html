@@ -15,10 +15,20 @@
   <li><a href="about.html">A propos</a></li>
 </ul>
 	<center>
-	  <h1>Vous voulez des quiz qui vous font tenter de deviner d'où proviennent des screenshots tirés aléatoirement d'une base de données à laquelle les utilisateurs peuvent ajouter leurs propres screenshots ?</h1>
-	  <p>1. Vous êtes au bon endroit.<br>
-	  2. Vous cherchez des trucs bizarres.</p>
-	  <p class="answer"><a href="quiz.html">Commencer un quiz</a></p>
+	  <h1>Soumettre un screenshot :</h1>
+	  <form method="post" enctype="multipart/form-data">
+	    <p><input type="file" name="new_screenshot" ></p>
+		<p><select name="my_select">
+          <option value="1">Film</option>
+          <option value="2">Série</option>
+          <option value="3">Jeu vidéo</option>
+        </select></p>
+      <p><input type="text" name="tanswer" placeholder="Enter correct answer" maxlength="10"></p>
+      <p><input type="text" name="wanswer1" placeholder="Enter a wrong answer" maxlength="10"></p>
+      <p><input type="text" name="wanswer2" placeholder="Enter a wrong answer" maxlength="10"></p>
+      <p><input type="text" name="wanswer3" placeholder="Enter a wrong answer" maxlength="10"></p>
+      <p><button type="submit">Soumettre</button></p>
+    </form>
   <footer>
 	<p>Website created by Grégoire Labasse (#6607969)</p>
 	</footer>
