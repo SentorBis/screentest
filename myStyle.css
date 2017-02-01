@@ -1,8 +1,11 @@
-body {
-	margin: 0;
-	padding-bottom: 6rem;
-	background-color: white;
+html {
 	min-height: 100%;
+	background-color: white;
+	position: relative;
+}
+
+body {
+	margin: 0 0 60px;
 }
 
 header {
@@ -17,19 +20,6 @@ header {
 	padding: 0px 10px 0px 60px;
 }
 
-center {
-	position: absolute;
-	top: 40%;
-	right: 0;
-	bottom: 20%;
-	left: 0;
-	width: 100%;
-	text-align: center;
-	margin: 0;
-	padding-bottom: 6rem;
-	background-color: white;
-	min-height: 100%;
-}
 
 p.answer {
 	text-align: center;
@@ -40,9 +30,16 @@ p.answer {
 	padding: 10px;
 }
 footer {
-	position: absolute;
-	bottom: 0%;
-	padding: 1rem;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 60px;   /* Height of the footer */
+}
+
+#standalonetext {
+	margin: 5% 10%;
+	line-height: 25px;
 }
 
 ul {
