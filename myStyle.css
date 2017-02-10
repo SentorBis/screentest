@@ -29,6 +29,8 @@ input.home {
     margin-left: 25%;
 	padding: 10px;
 	width: 50%;
+	font-weight: bold;
+	font-size: 14px;
 	
 	background: white; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
