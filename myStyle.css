@@ -21,13 +21,14 @@ header {
 }
 
 
-p.answer {
+input.home {
 	text-align: center;
 	border: grey solid 1px;
 	border-radius: 5px;
 	margin-right: 25%;
     margin-left: 25%;
 	padding: 10px;
+	width: 50%;
 	
 	background: white; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
@@ -35,6 +36,7 @@ p.answer {
     background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
     background: linear-gradient(white, lightgrey); /* Standard syntax */
 }
+
 footer {
    position: absolute;
    left: 0;
