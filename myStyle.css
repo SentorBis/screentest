@@ -39,6 +39,14 @@ input.home {
     background: linear-gradient(white, lightgrey); /* Standard syntax */
 }
 
+input[type="submit"]:hover {
+	background: #e6e6e6; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#e6e6e6, #bfbfbf); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#e6e6e6, #bfbfbf); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#e6e6e6, #bfbfbf); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#e6e6e6, #bfbfbf); /* Standard syntax */
+}
+
 footer {
    position: absolute;
    left: 0;
