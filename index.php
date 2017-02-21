@@ -12,9 +12,9 @@
   
   <body>
 	  <ul>
-	    <li><a class="active" href="index.html">Accueil</a></li>
-	    <li><a href="quiz.html">Nouveau quiz</a></li>
-	    <li><a href="submit.html">Proposer un screenshot</a></li>
+	    <li><a class="active" href="index.php">Accueil</a></li>
+	    <li><a href="quiz.php">Nouveau quiz</a></li>
+	    <li><a href="submit.php">Proposer un screenshot</a></li>
 	    <li><a href="about.html">A propos</a></li>
 	  </ul>
 	  <center>
@@ -24,6 +24,10 @@
 		<form action="quiz.html">
 			<input type="submit" value="Commencer un quiz" class="home" />
 		</form>
+		
+		<?php
+		echo "Hello World!";
+		?>
 	  </center>
   
 	  <footer>
