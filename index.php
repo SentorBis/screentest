@@ -24,10 +24,6 @@
 		<form action="quiz.html">
 			<input type="submit" value="Commencer un quiz" class="home" />
 		</form>
-		
-		<?php
-		echo "Hello World!";
-		?>
 	  </center>
   
 	  <footer>

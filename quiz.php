@@ -18,6 +18,27 @@
 		<li><a href="about.html">A propos</a></li>
 	  </ul>
 	<center>
+	  <?php
+		try {
+			$dbuser = 'postgres';
+			$dbpass = 'Homere69';
+			$host = 'localhost';
+			$dbname='screentest';
+
+			$connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+		} catch (PDOException $e) {
+			echo "Error : " . $e->getMessage() . "<br/>";
+			die();
+		}
+		
+		$sql = 'SELECT cat_id, cat_name, description FROM Category';
+		foreach ($connec->query($sql) as $row) {
+			print $row['cat_id'] . " ";
+			print $row['cat_name'] . "-->";
+			print $row['description'] . "<br>";
+		}
+	  ?>
+	  
 	  <h1>Question X (sur Y)</h1>
 	  <img src="winners_dont_cheat.jpg" width="400"></img>
 	  <p>Ce screenshot provient de :</p>
