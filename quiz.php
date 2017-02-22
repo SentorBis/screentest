@@ -18,6 +18,7 @@
 		<li><a href="about.html">A propos</a></li>
 	  </ul>
 	<center>
+	
 	  <?php
 		try {
 			$dbuser = 'postgres';
@@ -28,6 +29,7 @@
 			$connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 		} catch (PDOException $e) {
 			echo "Error : " . $e->getMessage() . "<br/>";
+			echo "The application failed to connect to the database.<br/>"
 			die();
 		}
 		

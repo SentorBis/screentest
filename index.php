@@ -21,7 +21,7 @@
 	    <h1>Vous voulez des quiz qui vous font tenter de deviner d'où proviennent des screenshots tirés aléatoirement d'une base de données à laquelle les utilisateurs peuvent ajouter leurs propres screenshots ?</h1>
 	    <p>1. Vous êtes au bon endroit.<br>
 	    2. Vous cherchez des trucs bizarres.</p>
-		<form action="quiz.html">
+		<form action="quiz.php">
 			<input type="submit" value="Commencer un quiz" class="home" />
 		</form>
 	  </center>
