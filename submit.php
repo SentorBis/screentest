@@ -16,6 +16,7 @@
 	  <li><a href="quiz.php">Nouveau quiz</a></li>
 	  <li><a href="submit.php">Proposer un screenshot</a></li>
 	  <li><a href="about.html">A propos</a></li>
+	  <li><a href="chrono.html">Test Javascript (dev)</a></li>
 	</ul>
 	<center>
 	  <h1>Soumettre un screenshot :</h1>
