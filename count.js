@@ -27,25 +27,8 @@ var count = setInterval(function() {
     }
 }, 500);
 
-/*var Count = (function() {
-	var entity = {};
-	entity.countdownTime;
-	
-	 function init() {
-		now = new Date();
-		this.countdownTime = new Date(now.toDateString());
-		this.countdownTime.setSeconds(countdownTime.getSeconds() + 15);
-		document.write("ok");
-	}
-	
-	entity.toDisplay = function() {
-		if (countdownTime) {
-			return countdownTime.toTimeString();
-		} else {
-			this.init();
-			return countdownTime.toTimeString();
-		}
-	}
-	
-	return entity.toDisplay();
-} ());*/
+function countReset() {
+	countDownDate = setCountdown(15);
+	count();
+	document.write("counting");
+}
