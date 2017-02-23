@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<meta http-equiv="pragma" content="no-cache" />
 	<title>ScreenTest - Quiz</title>
     <link rel="stylesheet" type="text/css" href="myStyle.css">
   </head>
@@ -19,17 +20,20 @@
 	  </ul>
 	<center>
 	
-	  <?php
+	  <p><?php
+		chmod("quiz.php",0755);
+		ini_set('display_errors',1);
+		error_reporting(E_ALL | E_STRICT);
 		try {
 			$dbuser = 'postgres';
 			$dbpass = 'Homere69';
-			$host = 'localhost';
+			$host = 'localhost:81';
 			$dbname='screentest';
 
 			$connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 		} catch (PDOException $e) {
 			echo "Error : " . $e->getMessage() . "<br/>";
-			echo "The application failed to connect to the database.<br/>"
+			echo "The application failed to connect to the database.<br/>";
 			die();
 		}
 		
@@ -39,15 +43,7 @@
 			print $row['cat_name'] . "-->";
 			print $row['description'] . "<br>";
 		}
-	  ?>
-	  
-	  <h1>Question X (sur Y)</h1>
-	  <img src="winners_dont_cheat.jpg" width="400"></img>
-	  <p>Ce screenshot provient de :</p>
-	  <p class="answer">Réponse A</p>
-	  <p class="answer">Réponse B</p>
-	  <p class="answer">Réponse C</p>
-	  <p class="answer">Réponse D</p>
+	  ?></p>
 	</center>
 	
 	<footer>
