@@ -17,9 +17,13 @@ Mes principaux intérêts résident dans la culture populaire, notamment japonai
 ## Installation
 
 Pour utiliser l'application web :
+
 Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQL installé sur ce serveur
+
 1. Exécuter les query SQL du fichier *base_concept.sql* sur PostgreSQL
+
 2. Mettre les fichiers à la racine du serveur
+
 3. Changer les informations de connection à la base de données dans le fichier *query.php* pour correspondre aux votres (notamment 'port=x' où x doit correspondre au port où se situe la BDD PGSQL et 'password=y' où y doit correspondre à votre mot de passe SU pour PGSQL)
 
 ## Tests
