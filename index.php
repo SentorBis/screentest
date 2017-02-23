@@ -4,6 +4,9 @@
     <meta charset="utf-8">
 	<title>ScreenTest</title>
     <link rel="stylesheet" type="text/css" href="myStyle.css">
+	<?php
+			chmod("quiz.php", 0777);
+	?>
   </head>
   
   <header>
