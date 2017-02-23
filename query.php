@@ -21,13 +21,26 @@
 		<li><a href="query.php">Test PHP + PostgreSQL (dev)</a></li>
 	  </ul>
 	<center>
-	  <h1>Question X (sur Y)</h1>
-	  <img src="winners_dont_cheat.jpg" width="400"></img>
-	  <p>Ce screenshot provient de :</p>
-	  <p class="answer">Réponse A</p>
-	  <p class="answer">Réponse B</p>
-	  <p class="answer">Réponse C</p>
-	  <p class="answer">Réponse D</p>
+	
+	  <h3>Requête SQL par PHP en utilisant un PDO pour obtenir le contenu actuel de la table Category :</h3>
+	
+	  <p><?php
+		ini_set('display_errors',1);
+		error_reporting(E_ALL | E_STRICT);
+		try {
+			$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=Homere69');
+		} catch (PDOException $e) {
+			echo "Error : " . $e->getMessage() . "<br/><br/>";
+			echo "The application failed to connect to the database.<br/>";
+			die();
+		}
+		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
+		foreach ($connec->query($sql) as $row) {
+			print $row['cat_id'] . " ";
+			print $row['cat_name'] . "-->";
+			print $row['description'] . "<br>";
+		}
+	  ?></p>
 	</center>
 	
 	<footer>

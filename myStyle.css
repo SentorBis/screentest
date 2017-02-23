@@ -20,6 +20,9 @@ header {
 	padding: 0px 10px 0px 60px;
 }
 
+center {
+	margin: 10% 15%;
+}
 
 input.home {
 	text-align: center;
