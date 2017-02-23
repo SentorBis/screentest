@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS  screentest.Question (
 		answer2 		VARCHAR(50)	NOT NULL,
 		answer3 		VARCHAR(50)	NOT NULL,
 		cat_id			INTEGER		NOT NULL,
-		validated		BOOLEAN		NOT NULL COMMENT, /*Une question ajoutée par un internaute n'est pas validée. Il faut validation de l'administrateur pour que la question soit utilisable. */
+		validated		BOOLEAN		NOT NULL, /*Une question ajoutée par un internaute n'est pas validée. Il faut validation de l'administrateur pour que la question soit utilisable. */
 		PRIMARY KEY (screen_id),
 		FOREIGN KEY(cat_id) REFERENCES screentest.Category(cat_id) ON DELETE RESTRICT ON UPDATE CASCADE);
 
