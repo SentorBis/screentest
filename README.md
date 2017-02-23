@@ -6,13 +6,9 @@ par Grégoire Labasse (#6607969)
 
 Un site dédié à la génération et à l'exécution de quiz demandant à l'utilisateur de deviner de quel film / série / bande dessinée / etc. provient chaque image qui lui est montrée.
 Voici une liste non-exhaustive de fonctionnalités que l'on cherche à introduire dans ce projet :
- - un système de tags pour classer les images et proposer des quiz à thème (par pays d'origine, par média, etc.)
- - une page pour uploader de nouvelles images la/les réponse(s) associée(s)
-	- un outi de modération pour éviter les abus et vérifier la qualité des uploads
-
-## Code Example
-
-n/a
+ - une base de données contenant des images avec des questions pour proposer des quiz à thème triés par catégorie d'image
+ - une page pour uploader de nouvelles images  avec les réponses associées
+ - un outi de modération pour éviter les abus et vérifier la qualité des uploads
 
 ## Motivation
 
@@ -20,16 +16,16 @@ Mes principaux intérêts résident dans la culture populaire, notamment japonai
 
 ## Installation
 
-Pour visualiser le site web dans son état actuel : http://htmlpreview.github.io/?https://github.com/SentorBis/screentest/blob/master/index.html
-
-## API Reference
-
-n/a
+Pour utiliser l'application web :
+Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQL installé sur ce serveur
+1. Exécuter les query SQL du fichier *base_concept.sql* sur PostgreSQL
+2. Mettre les fichiers à la racine du serveur
+3. Changer les informations de connection à la base de données dans le fichier *query.php* pour correspondre aux votres (notamment 'port=x' où x doit correspondre au port où se situe la BDD PGSQL et 'password=y' où y doit correspondre à votre mot de passe SU pour PGSQL)
 
 ## Tests
 
-n/a
+La page *query.php* permet de vérifier que l'application peut se connecter à la base de données et en extraire des données. Si tout fonctionne, elle devrait afficher quatre lignes correspondant aux données insérées dans la table Category de la BDD.
 
-## License
+La page *chrono.html* permet de vérifier le fonctionnement d'un script Javascript faisant un décompte de quinze secondes. Un bouton permettant de réinitialiser le compteur (le faire repartir de 15) est présent, représentant une première composante interactive de l'application web.
 
-n/a
+Ces deux pages sont présentes à fin de test et seront retirées une fois que les fonctions associées seront intégrées à l'ensemble de l'application.
