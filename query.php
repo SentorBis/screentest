@@ -37,7 +37,7 @@
 		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
 		foreach ($connec->query($sql) as $row) {
 			print $row['cat_id'] . " ";
-			print $row['cat_name'] . "-->";
+			print $row['cat_name'] . "--> ";
 			print $row['description'] . "<br>";
 		}
 	  ?></p>

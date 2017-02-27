@@ -20,7 +20,24 @@
 		<li><a href="chrono.html">Test Javascript (dev)</a></li>
 		<li><a href="query.php">Test PHP + PostgreSQL (dev)</a></li>
 	  </ul>
-	<center>
+	  
+	  <center><?php
+		ini_set('display_errors',1);
+		error_reporting(E_ALL | E_STRICT);
+		try {
+			$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=Homere69');
+		} catch (PDOException $e) {
+			echo "Error : " . $e->getMessage() . "<br/><br/>";
+			echo "The application failed to connect to the database.<br/>";
+			die();
+		}
+		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
+		foreach ($connec->query($sql) as $row) {
+			print "<p><button>" . $row['cat_name'] . "</button></p>";
+		}
+	  ?></center>
+	  
+	<div class="hide"><center>
 	  <h1>Question X (sur Y)</h1>
 	  <img src="winners_dont_cheat.jpg" width="400"></img>
 	  <p>Ce screenshot provient de :</p>
@@ -28,7 +45,7 @@
 	  <p class="answer">Réponse B</p>
 	  <p class="answer">Réponse C</p>
 	  <p class="answer">Réponse D</p>
-	</center>
+	</center></div>
 	
 	<footer>
 	  <p>Website created by Grégoire Labasse (#6607969)</p>
