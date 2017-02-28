@@ -28,7 +28,7 @@
 		ini_set('display_errors',1);
 		error_reporting(E_ALL | E_STRICT);
 		try {
-			$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=Homere69');
+			$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=password');
 		} catch (PDOException $e) {
 			echo "Error : " . $e->getMessage() . "<br/><br/>";
 			echo "The application failed to connect to the database.<br/>";
