@@ -21,7 +21,7 @@ header {
 }
 
 center {
-	margin: 10% 15%;
+	margin: 50px 15%;
 }
 
 input.home, button {
@@ -43,7 +43,7 @@ input.home, button {
     background: linear-gradient(white, lightgrey); /* Standard syntax */
 }
 
-.hide {
+.quiz {
 	display: none;
 }
 

@@ -37,7 +37,7 @@
 		}
 	  ?></center>
 	  
-	<div class="hide"><center>
+	<div class="quiz"><center>
 	  <h1>Question X (sur Y)</h1>
 	  <img src="winners_dont_cheat.jpg" width="400"></img>
 	  <p>Ce screenshot provient de :</p>
