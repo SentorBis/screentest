@@ -47,7 +47,7 @@ input.home, button {
 	display: none;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, button:hover {
 	background: #e6e6e6; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#e6e6e6, #bfbfbf); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#e6e6e6, #bfbfbf); /* For Opera 11.1 to 12.0 */
