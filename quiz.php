@@ -4,6 +4,7 @@
     <meta charset="utf-8">
 	<meta http-equiv="pragma" content="no-cache" />
 	<title>ScreenTest - Quiz</title>
+	<script type="text/javascript" src="quiz.js"></script>
     <link rel="stylesheet" type="text/css" href="myStyle.css">
   </head>
   
@@ -21,7 +22,7 @@
 		<li><a href="query.php">Test PHP + PostgreSQL (dev)</a></li>
 	  </ul>
 	  
-	  <center><?php
+	  <div id="selectQuiz"><center><?php
 		ini_set('display_errors',1);
 		error_reporting(E_ALL | E_STRICT);
 		try {
@@ -33,18 +34,18 @@
 		}
 		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
 		foreach ($connec->query($sql) as $row) {
-			print "<p><button>" . $row['cat_name'] . "</button></p>";
+			print "<p><button onclick=\"gotoQuiz(" . $row['cat_id'] . ")\">" . $row['cat_name'] . "</button></p>";
 		}
-	  ?></center>
+	  ?></center></div>
 	  
-	<div class="quiz"><center>
+	<div id="quiz"><center>
 	  <h1>Question X (sur Y)</h1>
 	  <img src="winners_dont_cheat.jpg" width="400"></img>
 	  <p>Ce screenshot provient de :</p>
-	  <p class="answer">Réponse A</p>
-	  <p class="answer">Réponse B</p>
-	  <p class="answer">Réponse C</p>
-	  <p class="answer">Réponse D</p>
+	  <button>Réponse A</button>
+	  <button>Réponse B</button>
+	  <button>Réponse C</button>
+	  <button>Réponse D</button>
 	</center></div>
 	
 	<footer>

@@ -43,7 +43,7 @@ input.home, button {
     background: linear-gradient(white, lightgrey); /* Standard syntax */
 }
 
-.quiz {
+#quiz {
 	display: none;
 }
 
