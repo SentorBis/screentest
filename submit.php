@@ -21,17 +21,23 @@
 	</ul>
 	<center>
 	  <h1>Soumettre un screenshot :</h1>
-	  <form method="post" enctype="multipart/form-data">
-	    <p><input type="file" name="new_screenshot" ></p>
-		<p><select name="my_select">
+	  <form action="insert.php" method="post" enctype="multipart/form-data">
+		<p><label>Screenshot (format JPG ou PNG, maximum 300Ko) :</label><br/>
+	    <input type="file" name="new_screenshot" ></p>
+		<p><label>Catégorie :</label><br/>
+		<select name="my_select">
           <option value="1">Film</option>
           <option value="2">Série</option>
           <option value="3">Jeu vidéo</option>
+          <option value="4">Dessin animé</option>
         </select></p>
-        <p><input type="text" name="tanswer" placeholder="Enter correct answer" maxlength="10"></p>
-        <p><input type="text" name="wanswer1" placeholder="Enter a wrong answer" maxlength="10"></p>
-        <p><input type="text" name="wanswer2" placeholder="Enter a wrong answer" maxlength="10"></p>
-        <p><input type="text" name="wanswer3" placeholder="Enter a wrong answer" maxlength="10"></p>
+		
+        <p><label>Bonne réponse (origine du screenshot) :</label><br/>
+		<input type="text" name="tanswer" placeholder="Enter correct answer" maxlength="10"></p>
+		<p><label>Mauvaises réponses (essayer de donner des mauvaises réponses crédibles) :</label><br/>
+        <input type="text" name="wanswer1" placeholder="Enter a wrong answer" maxlength="10">
+        <input type="text" name="wanswer2" placeholder="Enter a wrong answer" maxlength="10">
+        <input type="text" name="wanswer3" placeholder="Enter a wrong answer" maxlength="10"></p>
         <p><button type="submit">Soumettre</button></p>
       </form>
 	</center>
