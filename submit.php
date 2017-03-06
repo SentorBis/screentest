@@ -26,6 +26,7 @@
 	    <input type="file" name="new_screenshot" ></p>
 		<p><label>Catégorie :</label><br/>
 		<select name="category">
+		  <option value="0" selected></option>
           <option value="1">Film</option>
           <option value="2">Série</option>
           <option value="3">Jeu vidéo</option>
@@ -72,13 +73,13 @@
 			$filename = $tktnum[0] . $tktnum[1] . $tktnum[2] . $tktnum[3];
 			return $filename;
 		}
-	  
-	  
 
 	  if(isset($_POST['submit'])) {
 		  
 		  if($_FILES['new_screenshot']['size'] == 0) {
 			  echo 'Vous devez choisir une image.';
+		  } else if ( $_POST['category'] == 0 || !(isset($_POST['tanswer'])) || !(isset($_POST['wanswer1'])) || !(isset($_POST['wanswer2'])) || !(isset($_POST['wanswer3'])) ) {
+			  echo 'Vérifiez que vous avez bien rempli tous les champs et choisi une catégorie valide.';
 		  } else {
 			  
 			  /****************CONNECTION BASE DE DONNEES [FONCTIONNE]
@@ -129,24 +130,26 @@
 			}
 			// Check if $uploadOk is set to 0 by an error
 			if ($uploadOk == 0) {
-				echo "Sorry, your file was not uploaded.";
+				echo "Votre fichier n'a pas pu être uploadé.<br>";
 			// if everything is ok, try to upload file
 			} else {
 				if (move_uploaded_file($_FILES["new_screenshot"]["tmp_name"], $target_file)) {
-					echo "The file ". basename( $_FILES["new_screenshot"]["name"]). " has been uploaded.";
+					echo "Le fichier ". basename( $_FILES["new_screenshot"]["name"]). " a été uploadé. <br>";
 				} else {
-					echo "Sorry, there was an error uploading your file.";
+					echo "Désolé, il y a eu une erreur lors de l'upload de votre fichier, celui-ci n'a pas pu être mis en ligne.<br>";
 				}
 			}
 		  }
 		  
 		  //RAPPEL : l'image a été uploadée et son adresse est $target_file
 		  
+		  //A FAIRE : mettre l'upload à proprement parler à la fin
+		  
 		  $cat = $_POST['category'];
 		  $a1 = $_POST['tanswer'];
 		  $a2 = $_POST['wanswer1'];
 		  $a3 = $_POST['wanswer2'];
-		  $a4 = $_POST['wanswer3'];*/
+		  $a4 = $_POST['wanswer3'];
 		  
 /**************************TEMPLATE INSERTION IMAGE DB [?]
 $img = fopen($file_name, 'r') or die("cannot read image\n");
