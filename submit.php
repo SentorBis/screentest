@@ -42,30 +42,105 @@
       </form>
 	  
 	  <p><?php
-		ini_set('display_errors',1);
+	  	ini_set('display_errors',1);
 		error_reporting(E_ALL | E_STRICT);
-	  if(isset($_POST['submit'])) {
-		  try {
-				$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=password');
-		  } catch (PDOException $e) {
-			  echo "Error : " . $e->getMessage() . "<br/><br/>";
-			  echo "The application failed to connect to the database.<br/>";
-			  die();
-		  }
-		  
 		
-		  if(isset($_POST['new_screenshot'])) {
-			$file = $_POST['new_screenshot'];
-			echo $file;
+		
+		// Fonction servant à générer un nom de fichier ayant des chances minimes de déjà exister.
+		// BUG : SEMBLE Y AVOIR UN PROBLEME AVEC LA BOUCLE ET L'USAGE DE $i
+		function generateUniqueFilename() {
+			$now = getdate();
+			$tktnum = array(
+				$now['mday'] + $now['seconds'],
+				$now['mon'] + $now['minutes'],
+				$now['year'] - 2000 + $now['hours'],
+				rand(0,100)
+			);
+			
+			$i = 0;
+			while($i < 4){
+				if ($tktnum[$i] > 99) {
+					$tktnum[$i] -= 100;
+				} else if ($tktnum[$i] < 10) {
+					$tktnum[$i] = '0' . $tktnum[$i];
+					$i++;
+				} else {
+					$i++;
+				}
+			}
+			
+			$filename = $tktnum[0] . $tktnum[1] . $tktnum[2] . $tktnum[3];
+			return $filename;
+		}
+	  
+	  
+
+	  if(isset($_POST['submit'])) {
+		  
+		  if($_FILES['new_screenshot']['size'] == 0) {
+			  echo 'Vous devez choisir une image.';
 		  } else {
-			  echo 'File not set';
+			  
+			  /****************CONNECTION BASE DE DONNEES [FONCTIONNE]
+			  try {
+					$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=password');
+			  } catch (PDOException $e) {
+				  echo "Error : " . $e->getMessage() . "<br/><br/>";
+				  echo "The application failed to connect to the database.<br/>";
+				  die();
+			  }*/
+			  
+			  //FILE UPLOAD
+			  //Le code de base provient de W3Schools, et a été arrangé pour les besoins du site.
+			  
+			$target_dir = "screens/";
+			$tmp = explode(".", $_FILES["new_screenshot"]["name"]);
+			$target_file = $target_dir . generateUniqueFilename() . "." . end($tmp);
+			$uploadOk = 1;
+			
+			// basename($_FILES["new_screenshot"]["name"])
+			
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			// Check if image file is a actual image or fake image
+			if(isset($_POST["submit"])) {
+				$check = getimagesize($_FILES["new_screenshot"]["tmp_name"]);
+				if($check !== false) {
+					//echo "File is an image - " . $check["mime"] . ".";
+					$uploadOk = 1;
+				} else {
+					echo "File is not an image.<br>";
+					$uploadOk = 0;
+				}
+			}
+			// Check if file already exists
+			if (file_exists($target_file)) {
+				echo "Sorry, file already exists.<br>";
+				$uploadOk = 0;
+			}
+			// Check file size
+			if ($_FILES["new_screenshot"]["size"] > 300000) {
+				echo "Sorry, your file is too large.<br>";
+				$uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+				echo "Sorry, only JPG, JPEG & PNG files are allowed.<br>";
+				$uploadOk = 0;
+			}
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+				echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
+			} else {
+				if (move_uploaded_file($_FILES["new_screenshot"]["tmp_name"], $target_file)) {
+					echo "The file ". basename( $_FILES["new_screenshot"]["name"]). " has been uploaded.";
+				} else {
+					echo "Sorry, there was an error uploading your file.";
+				}
+			}
 		  }
 		  
-		  /*$img = fopen($file_name, 'r') or die("Cannot read image\n");
-		  echo $file . ' : ' . filesize($file) . ' bytes.';*/
-		  /*$data = fread($img, filesize($file));
-		  $es_data = pg_escape_bytea($data);
-		  fclose($img);
+		  //RAPPEL : l'image a été uploadée et son adresse est $target_file
 		  
 		  $cat = $_POST['category'];
 		  $a1 = $_POST['tanswer'];
@@ -73,7 +148,8 @@
 		  $a3 = $_POST['wanswer2'];
 		  $a4 = $_POST['wanswer3'];*/
 		  
-/*$img = fopen($file_name, 'r') or die("cannot read image\n");
+/**************************TEMPLATE INSERTION IMAGE DB [?]
+$img = fopen($file_name, 'r') or die("cannot read image\n");
 $data = fread($img, filesize($file_name));
 
 $es_data = pg_escape_bytea($data);
