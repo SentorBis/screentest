@@ -34,11 +34,11 @@
         </select></p>
 		
         <p><label>Bonne réponse (origine du screenshot) :</label><br/>
-		<input type="text" name="tanswer" placeholder="Enter correct answer" maxlength="10"></p>
+		<input type="text" name="tanswer" placeholder="Enter correct answer" maxlength="50"></p>
 		<p><label>Mauvaises réponses (essayer de donner des mauvaises réponses crédibles) :</label><br/>
-        <input type="text" name="wanswer1" placeholder="Enter a wrong answer" maxlength="10">
-        <input type="text" name="wanswer2" placeholder="Enter a wrong answer" maxlength="10">
-        <input type="text" name="wanswer3" placeholder="Enter a wrong answer" maxlength="10"></p>
+        <input type="text" name="wanswer1" placeholder="Enter a wrong answer" maxlength="50">
+        <input type="text" name="wanswer2" placeholder="Enter a wrong answer" maxlength="50">
+        <input type="text" name="wanswer3" placeholder="Enter a wrong answer" maxlength="50"></p>
         <p><button type="submit" name="submit">Soumettre</button></p>
       </form>
 	  
@@ -144,6 +144,7 @@
 		  //RAPPEL : l'image a été uploadée et son adresse est $target_file
 		  
 		  //A FAIRE : mettre l'upload à proprement parler à la fin
+		  //A FAIRE : check nombre de caractères effectivement inputés (le dernier char ?)
 		  
 		  $cat = $_POST['category'];
 		  $a1 = $_POST['tanswer'];
