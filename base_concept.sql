@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS  screentest.Category (
 DROP TABLE IF EXISTS screentest.Question;
 CREATE TABLE IF NOT EXISTS  screentest.Question (
 		screen_id		INTEGER		NOT NULL,
-		image			BYTEA		NOT NULL,
+		image			VARCHAR(25)	NOT NULL, /*Fait référence directement à l'url de l'image.*/
 		answer0 		VARCHAR(50)	NOT NULL,
 		answer1 		VARCHAR(50)	NOT NULL,
 		answer2 		VARCHAR(50)	NOT NULL,
