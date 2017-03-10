@@ -22,6 +22,27 @@
 	  </ul>
 	<center>
 	
+	<?php
+	  	ini_set('display_errors',1);
+		error_reporting(E_ALL | E_STRICT);
+		
+		// DEBUG
+		
+		if(isset($_GET['debug'])) {
+			echo '<h1>Mode debug</h1>';
+			$numtest = 0;
+			$success = 0;
+			$failures = 0;
+			$errors = "<p>";
+			
+			echo "<p>Aucun test n'a été implémenté pour cette page.<p>";
+			
+			echo '<p>' . $numtest . ' tests effectués: ' . $success . ' tests complétés avec succès, ' . $failures . ' tests ont rencontré des erreurs.</p>';
+			if ($failures > 0) {
+				echo $errors . "</p>";
+			}
+		}
+	?>
 	  <h3>Requête SQL par PHP en utilisant un PDO pour obtenir le contenu actuel de la table Category :</h3>
 	
 	  <p><?php

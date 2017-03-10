@@ -19,7 +19,38 @@
 	  <li><a href="chrono.html">Test Javascript (dev)</a></li>
 	  <li><a href="query.php">Test PHP + PostgreSQL (dev)</a></li>
 	</ul>
+	
 	<center>
+	
+	<?php
+	  	ini_set('display_errors',1);
+		error_reporting(E_ALL | E_STRICT);
+		
+		// DEBUG
+		
+		if(isset($_GET['debug'])) {
+			echo '<h1>Mode debug</h1>';
+			$numtest = 0;
+			$success = 0;
+			$failures = 0;
+			$errors = "<p>";
+			
+			//Test generateUniqueFilename
+			$numtest++;
+			if (strcmp(generateUniqueFilename(), generateUniqueFilename()) != 0) {
+				$success++;
+			} else {
+				$failures++;
+				$errors += "generateUniqueFilename: La fonction a produit deux filenames identiques.<br>";
+			}
+			
+			echo '<p>' . $numtest . ' tests effectués: ' . $success . ' tests complétés avec succès, ' . $failures . ' tests ont rencontré des erreurs.</p>';
+			if ($failures > 0) {
+				echo $errors . "</p>";
+			}
+		}
+	?>
+	
 	  <h1>Soumettre un screenshot :</h1>
 	  <form action="submit.php" method="post" enctype="multipart/form-data">
 		<p><label>Screenshot (format JPG ou PNG, maximum 300Ko) :</label><br/>
@@ -46,9 +77,7 @@
 	  	ini_set('display_errors',1);
 		error_reporting(E_ALL | E_STRICT);
 		
-		
 		// Fonction servant à générer un nom de fichier ayant des chances minimes de déjà exister.
-		// BUG : SEMBLE Y AVOIR UN PROBLEME AVEC LA BOUCLE ET L'USAGE DE $i
 		function generateUniqueFilename() {
 			$now = getdate();
 			$tktnum = array(

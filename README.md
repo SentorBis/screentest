@@ -28,8 +28,7 @@ Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQ
 
 ## Tests
 
-La page *query.php* permet de vérifier que l'application peut se connecter à la base de données et en extraire des données. Si tout fonctionne, elle devrait afficher quatre lignes correspondant aux données insérées dans la table Category de la BDD.
+Pour tester les pages comprenant des fonctions PHP rajoutez "?debug" après l'URL.
+Exemple: /submit.php?debug
 
-La page *chrono.html* permet de vérifier le fonctionnement d'un script Javascript faisant un décompte de quinze secondes. Un bouton permettant de réinitialiser le compteur (le faire repartir de 15) est présent, représentant une première composante interactive de l'application web.
-
-Ces deux pages sont présentes à fin de test et seront retirées une fois que les fonctions associées seront intégrées à l'ensemble de l'application.
+Les pages ayant du php mais n'utilisant pas de fonctions distinctes n'ont pas de tests implémentés.
