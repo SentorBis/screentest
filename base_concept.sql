@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS  screentest.Category (
 
 DROP TABLE IF EXISTS screentest.Question;
 CREATE TABLE IF NOT EXISTS  screentest.Question (
-		screen_id		INTEGER		NOT NULL,
+		screen_id		SERIAL PRIMARY KEY,
 		image			VARCHAR(25)	NOT NULL, /*Fait référence directement à l'url de l'image.*/
 		answer0 		VARCHAR(50)	NOT NULL,
 		answer1 		VARCHAR(50)	NOT NULL,
@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS  screentest.Question (
 		answer3 		VARCHAR(50)	NOT NULL,
 		cat_id			INTEGER		NOT NULL,
 		validated		BOOLEAN		NOT NULL, /*Une question ajoutée par un internaute n'est pas validée. Il faut validation de l'administrateur pour que la question soit utilisable. */
-		PRIMARY KEY (screen_id),
 		FOREIGN KEY(cat_id) REFERENCES screentest.Category(cat_id) ON DELETE RESTRICT ON UPDATE CASCADE);
 
 INSERT INTO screentest.Category(cat_id, cat_name, description) VALUES (1,'Cinéma','La catégorie de tous les films, sans restriction de taille ou de forme.');
