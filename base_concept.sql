@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS  screentest.Question (
 		answer2 		VARCHAR(50)	NOT NULL,
 		answer3 		VARCHAR(50)	NOT NULL,
 		cat_id			INTEGER		NOT NULL,
-		validated		BOOLEAN		NOT NULL, /*Une question ajoutée par un internaute n'est pas validée. Il faut validation de l'administrateur pour que la question soit utilisable. */
+		validated		BOOLEAN		NOT NULL DEFAULT false, /*Une question ajoutée par un internaute n'est pas validée. Il faut validation de l'administrateur pour que la question soit utilisable. */
 		FOREIGN KEY(cat_id) REFERENCES screentest.Category(cat_id) ON DELETE RESTRICT ON UPDATE CASCADE);
 
 INSERT INTO screentest.Category(cat_id, cat_name, description) VALUES (1,'Cinéma','La catégorie de tous les films, sans restriction de taille ou de forme.');
