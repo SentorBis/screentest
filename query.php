@@ -55,11 +55,22 @@
 			echo "The application failed to connect to the database.<br/>";
 			die();
 		}
+		
+		echo "<h2>Query Category</h3><br>";
 		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
 		foreach ($connec->query($sql) as $row) {
-			print $row['cat_id'] . " ";
+			print $row['cat_id'] . ". ";
 			print $row['cat_name'] . "--> ";
 			print $row['description'] . "<br>";
+		}
+		
+		echo "<h2>Query Question</h3><br>";
+		$sql = 'SELECT screen_id, image, answer0, cat_name FROM screentest.Question INNER JOIN screentest.Category ON screentest.Question.cat_id=screentest.Category.cat_id';
+		foreach ($connec->query($sql) as $row) {
+			print "<img src=\"" . $row['image'] . "\" width=\"400\"></img><br>";
+			print $row['screen_id'] . ". ";
+			print $row['answer0'] . ", ";
+			print $row['cat_name'] . ".<br>";
 		}
 	  ?></p>
 	</center>
