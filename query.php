@@ -65,12 +65,12 @@
 		}
 		
 		echo "<h2>Query Question</h3><br>";
-		$sql = 'SELECT screen_id, image, answer0, cat_name FROM screentest.Question INNER JOIN screentest.Category ON screentest.Question.cat_id=screentest.Category.cat_id';
+		$sql = 'SELECT screen_id, image, answer0, cat_name FROM screentest.Question INNER JOIN screentest.Category ON screentest.Question.cat_id=screentest.Category.cat_id ORDER BY screen_id ASC';
 		foreach ($connec->query($sql) as $row) {
 			print "<img src=\"" . $row['image'] . "\" width=\"400\"></img><br>";
 			print $row['screen_id'] . ". ";
 			print $row['answer0'] . ", ";
-			print $row['cat_name'] . ".<br>";
+			print $row['cat_name'] . ".<br><br>";
 		}
 	  ?></p>
 	</center>
