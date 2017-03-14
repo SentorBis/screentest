@@ -189,31 +189,6 @@
 			}
 			// le PDO est automatiquement fermé
 		  }
-		  
-		  //RAPPEL : l'image a été uploadée et son adresse est $target_file
-		  
-		  //A FAIRE : mettre l'upload à proprement parler à la fin
-		  //A FAIRE : check nombre de caractères effectivement inputés (le dernier char ?)
-		  
-/**************************TEMPLATE INSERTION IMAGE DB [?]
-$img = fopen($file_name, 'r') or die("cannot read image\n");
-$data = fread($img, filesize($file_name));
-
-$es_data = pg_escape_bytea($data);
-fclose($img);
-
-$query = "INSERT INTO images(id, data) Values(1, '$es_data')";
-pg_query($con, $query); 
-
-pg_close($con); 
-		  
-		  
-		  $sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
-		  foreach ($connec->query($sql) as $row) {
-			  print $row['cat_id'] . " ";
-			  print $row['cat_name'] . "--> ";
-			  print $row['description'] . "<br>";
-		  }*/
 	  }
 	  ?></p>
 	</center>
