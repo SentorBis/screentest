@@ -55,6 +55,12 @@ input[type="submit"]:hover, button:hover {
     background: linear-gradient(#e6e6e6, #bfbfbf); /* Standard syntax */
 }
 
+button.half {
+	width: 25%;
+	display: inline-block;
+	margin: 0%;
+}
+
 footer {
    position: absolute;
    left: 0;
