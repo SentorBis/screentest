@@ -42,11 +42,12 @@
 				echo $errors . "</p>";
 			}
 		}
-	?></center>
+	?>
 	  
-	  <div id="selectQuiz"><center><?php
+	  <div id="quiz"><?php
 		ini_set('display_errors',1);
 		error_reporting(E_ALL | E_STRICT);
+		
 		try {
 			$connec = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=password');
 		} catch (PDOException $e) {
@@ -54,21 +55,59 @@
 			echo "The application failed to connect to the database.<br/>";
 			die();
 		}
-		$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
-		foreach ($connec->query($sql) as $row) {
-			print "<p><button onclick=\"gotoQuiz(" . $row['cat_id'] . ")\">" . $row['cat_name'] . "</button></p>";
+		
+		if($_SERVER['REQUEST_METHOD'] == "POST") {
+			// L'UTILISATEUR A FAIT SA SELECTION
+			
+			$cat;
+			
+			for ($i = 1; $i <= 4; $i++) {
+				$chose = 'chose(' . $i . ')';
+				if (isset($_POST[$chose])) {
+					$cat = $i;
+					break;
+				}
+			}
+			
+			// NOTE : donner la possibilité de choisir la note plus tard p-ê
+			$limite = 20;
+			$sql = 'SELECT screen_id FROM screentest.Question WHERE cat_id=' . $cat . 'ORDER BY RANDOM() LIMIT ' . $limite;
+			
+			// calc nombre de lignes (donc de questions)
+			$sel = $connec->prepare($sql);
+			$sel->execute();
+			$count = $sel->rowCount();
+			
+			/*// Génération du quiz
+			***************Fonction de test utilisée avant d'implémenter l'appel AJAX, je le laisse au cas où***********
+			print "<h1 id='titre'>Question 1 (sur $count)</h1>\n";
+			print "<div id='screen'><img src=\"winners_dont_cheat.jpg\" width=\"400\"></div>\n";
+			print "<p>Ce screenshot provient de :</p>\n";
+			print "<button id='A'>Bakemonogatari</button>\n<button id='B'>Sayonara Zetsubou-sensei</button>\n<button id='C'>Tsukuyomi: Full Moon</button>\n<button id='D'>Tsukihime</button>\n\n";*/
+			
+			if ($count > 0) {
+				echo "<script type='text/javascript'>\nvar quizquest = [" . $cat;
+				foreach ($connec->query($sql) as $row) {
+					echo ", " . $row['screen_id'];
+				}
+				echo "];\nstartQuiz(quizquest);\n</script>";
+			} else {
+				print "<p>Cette catégorie ne comprend aucune question, désolé.</p>";
+			}
+			
+		} else {
+			// L'UTILISATEUR ARRIVE DIRECTEMENT SUR CETTE PAGE
+			
+			// AFFICHER SELECTION
+			$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
+			print "<form action=\"quiz.php\" method=\"post\">\n";
+			foreach ($connec->query($sql) as $row) {
+				print "<p><button type=\"submit\" name=\"chose(" . $row['cat_id'] . ")\">" . $row['cat_name'] . "</button></p>\n";
+			}
+			print "</form>\n";
 		}
-	  ?></center></div>
-	  
-	<div id="quiz"><center>
-	  <h1>Question X (sur Y)</h1>
-	  <img src="winners_dont_cheat.jpg" width="400"></img>
-	  <p>Ce screenshot provient de :</p>
-	  <button>Réponse A</button>
-	  <button>Réponse B</button>
-	  <button>Réponse C</button>
-	  <button>Réponse D</button>
-	</center></div>
+		//echo '<script type="text/javascript"> document.getElementById("adminForm").style.display = \'none\'; </script>';
+	  ?></div></center>
 	
 	<footer>
 	  <p>Website created by Grégoire Labasse (#6607969)</p>

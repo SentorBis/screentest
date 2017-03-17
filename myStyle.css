@@ -43,10 +43,6 @@ input.home, button {
     background: linear-gradient(white, lightgrey); /* Standard syntax */
 }
 
-#quiz {
-	display: none;
-}
-
 input[type="submit"]:hover, button:hover {
 	background: #e6e6e6; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#e6e6e6, #bfbfbf); /* For Safari 5.1 to 6.0 */
