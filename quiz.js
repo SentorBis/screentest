@@ -34,7 +34,7 @@ function getQuestion( qId ){
 	};
 	xhttp.open("GET", "getQuestion.php?q="+qId, true);
 	xhttp.send();
-} 
+}
 
 function gotoQuiz( catChosen ) {
 	document.getElementById("selectQuiz").style.display = 'none';
