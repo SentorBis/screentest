@@ -23,14 +23,15 @@
 				echo "<div id='screen'><img src=\"" . $row['image'] . "\" width=\"400\"></div>\n";
 				echo "<p>Ce screenshot provient de :</p>\n";
 				$thetrueanswerwillalwaysbeAbutwhatever = array(
-					"<button id='A'>" . $row['answer0'],
-					"<button id='B'>" . $row['answer1'],
-					"<button id='C'>" . $row['answer2'],
-					"<button id='D'>" . $row['answer3']);
+					'<button id="A" onclick="answer(\'A\')">' . $row['answer0'],
+					'<button id="B" onclick="answer(\'B\')">' . $row['answer1'],
+					'<button id="C" onclick="answer(\'C\')">' . $row['answer2'],
+					'<button id="D" onclick="answer(\'D\')">' . $row['answer3']);
 				shuffle($thetrueanswerwillalwaysbeAbutwhatever);
 				foreach($thetrueanswerwillalwaysbeAbutwhatever as $ans) {
-					echo "$ans</button>\n";
+					echo "$ans</button>";
 				}
+				echo "<p id='score'></p>";
 			}			
 		}
 		?>

@@ -21,7 +21,7 @@ function startQuiz( questionArray ) {
 	currentQuestion = 1;
 	totalQuestion = questionArray.length - 1;
 	score = 0;
-	getQuestion( questionArray[currentQuestion] );
+	getQuestion( questions[currentQuestion] );
 }
 
 function getQuestion( qId ){
@@ -30,10 +30,42 @@ function getQuestion( qId ){
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("quiz").innerHTML = this.responseText;
 			document.getElementById("titre").innerHTML = "Question " + currentQuestion + " (sur " + totalQuestion + ")";
+			document.getElementById("score").innerHTML = "Score: " + score + " points";
 		}
 	};
 	xhttp.open("GET", "getQuestion.php?q="+qId, true);
 	xhttp.send();
+}
+
+function answer( ans ) {
+	if ( ans != 'A' ) {
+		document.getElementById(ans).style.background = "red";
+		document.getElementById(ans).style.background = "-webkit-linear-gradient(red, indianred)";
+		document.getElementById(ans).style.background = "-o-linear-gradient(red, indianred)";
+		document.getElementById(ans).style.background = "-moz-linear-gradient(red, indianred)";
+		document.getElementById(ans).style.background = "linear-gradient(red, indianred)";
+		document.getElementById(ans).style.border = "indianred solid 1px;"
+	}	
+	document.getElementById('A').style.background = "lightgreen";
+	document.getElementById('A').style.background = "-webkit-linear-gradient(lightgreen, green)";
+	document.getElementById('A').style.background = "-o-linear-gradient(lightgreen, green)";
+	document.getElementById('A').style.background = "-moz-linear-gradient(lightgreen, green)";
+	document.getElementById('A').style.background = "linear-gradient(lightgreen, green)";
+	document.getElementById('A').style.border = "green solid 1px;"
+	
+	if (ans == 'A') {
+		upScore();
+		document.getElementById("score").innerHTML = "Score: " + score + " points";
+	}
+	currentQuestion++;
+	getQuestion( questions[currentQuestion] );
+}
+
+// A AMELIORER POUR PRENDRE EN COMPTE LE TEMPS PRIS
+function upScore() {
+	var basepoints = 100;
+	var modifier = 1;
+	score += basepoints*modifier;
 }
 
 function gotoQuiz( catChosen ) {
