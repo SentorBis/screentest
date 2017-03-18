@@ -30,6 +30,7 @@ input.home, button {
 	border-radius: 10px;
 	margin-right: 25%;
     margin-left: 25%;
+	margin-top: 5px;
 	padding: 10px;
 	width: 50%;
 	font-weight: bold;
@@ -55,6 +56,38 @@ button.half {
 	width: 25%;
 	display: inline-block;
 	margin: 0%;
+}
+
+.prescreen {
+	color: grey;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#score {
+	float: left;
+}
+
+#chrono {
+	float: right;
+}
+
+#screen {
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+#quiz {
+	margin-right: 25%;
+	margin-left: 25%;
+	margin-bottom: 25%;
+	padding: 0 10px 10px 10px;
+	border: lightgrey solid 1px;
+	border-radius: 20px;
+}
+
+h1#titre {
+	margin-bottom: 5px;
 }
 
 footer {

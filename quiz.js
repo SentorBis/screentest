@@ -5,6 +5,9 @@ var questions;
 var score;
 var totalQuestion;
 var answered;
+var countDownDate;
+var TIMERSEC = 10;
+
 
 function startQuiz( questionArray ) {
 	questions = questionArray;
@@ -22,7 +25,8 @@ function getQuestion( qId ){
 			document.getElementById("quiz").innerHTML = this.responseText;
 			answered = false;
 			document.getElementById("titre").innerHTML = "Question " + currentQuestion + " (sur " + totalQuestion + ")";
-			document.getElementById("score").innerHTML = "Score: " + score + " points";
+			document.getElementById("score").innerHTML = "Score: <strong>" + score + " points</strong>";
+			countDownDate = setCountdown(TIMERSEC);
 		}
 	};
 	xhttp.open("GET", "getQuestion.php?q="+qId, true);
@@ -79,4 +83,38 @@ function upScore() {
 	var basepoints = 100;
 	var modifier = 1;
 	score += basepoints*modifier;
+}
+
+// COUNT.JS, ENFIN DANS LE GAME
+function setCountdown( delay ) {
+	var count = new Date();
+	count.setSeconds(count.getSeconds() + delay + 1);
+	return count;
+}
+
+// Code emprunté à W3Schools et adapté pour ce timer
+var count = setInterval(function() {
+
+    var now = new Date().getTime();
+    
+    var distance = countDownDate - now;
+    
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+	if (seconds < 10) {
+		document.getElementById("timer").innerHTML = "Temps restant: 0" + seconds + "s"; 
+	} else {
+		document.getElementById("timer").innerHTML = "Temps restant: " + seconds + "s"; 
+	}
+    
+    if (distance < 0) {
+        clearInterval(count);
+        document.getElementById("timer").innerHTML = "On passe à la question suivante (placeholder text)";
+    }
+}, 500);
+
+function countReset() {
+	countDownDate = setCountdown(TIMERSEC);
+	count();
+	document.write("counting");
 }
