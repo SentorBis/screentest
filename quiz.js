@@ -26,7 +26,9 @@ function getQuestion( qId ){
 			answered = false;
 			document.getElementById("titre").innerHTML = "Question " + currentQuestion + " (sur " + totalQuestion + ")";
 			document.getElementById("score").innerHTML = "Score: <strong>" + score + " points</strong>";
-			countDownDate = setCountdown(TIMERSEC);
+			if (currentQuestion == 1) {
+				countDownDate = setCountdown(TIMERSEC);
+			} else countReset();
 		}
 	};
 	xhttp.open("GET", "getQuestion.php?q="+qId, true);
@@ -36,7 +38,9 @@ function getQuestion( qId ){
 function answer( ans ) {
 	if (!answered) {
 		answered = true;
-		if ( ans != 'A' ) {
+		if ( ans == '' ) {
+			document.getElementById("timer").innerHTML = "<strong>Temps écoulé !</strong>"; 	
+		} else if ( ans != 'A' ) {
 			document.getElementById(ans).style.background = "red";
 			document.getElementById(ans).style.background = "-webkit-linear-gradient(red, indianred)";
 			document.getElementById(ans).style.background = "-o-linear-gradient(red, indianred)";
@@ -86,6 +90,7 @@ function upScore() {
 }
 
 // COUNT.JS, ENFIN DANS LE GAME
+// A DEBUGUER
 function setCountdown( delay ) {
 	var count = new Date();
 	count.setSeconds(count.getSeconds() + delay + 1);
@@ -102,14 +107,14 @@ var count = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
 	if (seconds < 10) {
-		document.getElementById("timer").innerHTML = "Temps restant: 0" + seconds + "s"; 
+		document.getElementById("timer").innerHTML = "Temps restant: <strong>0" + seconds + "s</strong>"; 
 	} else {
-		document.getElementById("timer").innerHTML = "Temps restant: " + seconds + "s"; 
+		document.getElementById("timer").innerHTML = "Temps restant: <strong>" + seconds + "s</strong>"; 
 	}
     
     if (distance < 0) {
         clearInterval(count);
-        document.getElementById("timer").innerHTML = "On passe à la question suivante (placeholder text)";
+        answer('');
     }
 }, 500);
 

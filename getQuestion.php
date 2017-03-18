@@ -20,8 +20,9 @@
 			// Génération du quiz			
 			foreach ($connec->query($sql) as $row) {
 				echo "<h1 id='titre'></h1>\n"; // il est plus simple de remplir ça dans le JS, donc on met la balise mais on la laisse vide
-				echo "<div id='screen'><img src=\"" . $row['image'] . "\" width=\"400\"></div>\n";
-				echo "<p>Ce screenshot provient de :</p>\n";
+				echo "<div class='prescreen'><span id='score'></span><span id='timer'></span></div>";
+				echo "<div><img id='screen' src=\"" . $row['image'] . "\" width=\"400\"></div>\n";
+				echo "<p>Ce screenshot provient de :\n";
 				$thetrueanswerwillalwaysbeAbutwhatever = array(
 					'<button id="A" onclick="answer(\'A\')">' . $row['answer0'],
 					'<button id="B" onclick="answer(\'B\')">' . $row['answer1'],
@@ -31,7 +32,6 @@
 				foreach($thetrueanswerwillalwaysbeAbutwhatever as $ans) {
 					echo "$ans</button>";
 				}
-				echo "<p id='score'></p>";
 			}			
 		}
 		?>
