@@ -100,6 +100,7 @@
 			
 			// AFFICHER SELECTION
 			$sql = 'SELECT cat_id, cat_name, description FROM screentest.Category';
+			print "<h1>Choisissez une catégorie :</h1>\n";
 			print "<form action=\"quiz.php\" method=\"post\">\n";
 			foreach ($connec->query($sql) as $row) {
 				print "<p><button type=\"submit\" name=\"chose(" . $row['cat_id'] . ")\">" . $row['cat_name'] . "</button></p>\n";

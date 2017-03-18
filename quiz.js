@@ -4,16 +4,7 @@ var currentQuestion;
 var questions;
 var score;
 var totalQuestion;
-
-/*var newQuiz = function ( questionArray ) {
-	this.questions = questionArray;
-	this.currentQuestion = 1;
-	this.score = 0;
-	this.category = questionArray[0];
-	this.start = function() {
-		document.getElementById("quiz").innerHTML = "<p>" + category + "</p>";
-	};
-}*/
+var answered;
 
 function startQuiz( questionArray ) {
 	questions = questionArray;
@@ -29,6 +20,7 @@ function getQuestion( qId ){
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("quiz").innerHTML = this.responseText;
+			answered = false;
 			document.getElementById("titre").innerHTML = "Question " + currentQuestion + " (sur " + totalQuestion + ")";
 			document.getElementById("score").innerHTML = "Score: " + score + " points";
 		}
@@ -38,27 +30,48 @@ function getQuestion( qId ){
 }
 
 function answer( ans ) {
-	if ( ans != 'A' ) {
-		document.getElementById(ans).style.background = "red";
-		document.getElementById(ans).style.background = "-webkit-linear-gradient(red, indianred)";
-		document.getElementById(ans).style.background = "-o-linear-gradient(red, indianred)";
-		document.getElementById(ans).style.background = "-moz-linear-gradient(red, indianred)";
-		document.getElementById(ans).style.background = "linear-gradient(red, indianred)";
-		document.getElementById(ans).style.border = "indianred solid 1px;"
-	}	
-	document.getElementById('A').style.background = "lightgreen";
-	document.getElementById('A').style.background = "-webkit-linear-gradient(lightgreen, green)";
-	document.getElementById('A').style.background = "-o-linear-gradient(lightgreen, green)";
-	document.getElementById('A').style.background = "-moz-linear-gradient(lightgreen, green)";
-	document.getElementById('A').style.background = "linear-gradient(lightgreen, green)";
-	document.getElementById('A').style.border = "green solid 1px;"
-	
-	if (ans == 'A') {
-		upScore();
-		document.getElementById("score").innerHTML = "Score: " + score + " points";
+	if (!answered) {
+		answered = true;
+		if ( ans != 'A' ) {
+			document.getElementById(ans).style.background = "red";
+			document.getElementById(ans).style.background = "-webkit-linear-gradient(red, indianred)";
+			document.getElementById(ans).style.background = "-o-linear-gradient(red, indianred)";
+			document.getElementById(ans).style.background = "-moz-linear-gradient(red, indianred)";
+			document.getElementById(ans).style.background = "linear-gradient(red, indianred)";
+			document.getElementById(ans).style.border = "indianred solid 1px;"
+		}	
+		document.getElementById('A').style.background = "lightgreen";
+		document.getElementById('A').style.background = "-webkit-linear-gradient(lightgreen, green)";
+		document.getElementById('A').style.background = "-o-linear-gradient(lightgreen, green)";
+		document.getElementById('A').style.background = "-moz-linear-gradient(lightgreen, green)";
+		document.getElementById('A').style.background = "linear-gradient(lightgreen, green)";
+		document.getElementById('A').style.border = "green solid 1px;"
+		
+		if (ans == 'A') {
+			upScore();
+			document.getElementById("score").innerHTML = "Score: " + score + " points";
+		}
+		currentQuestion++;
+		
+		if (currentQuestion <= totalQuestion) {
+			getQuestion( questions[currentQuestion] );
+		} else {
+			omedetou();
+		}
 	}
-	currentQuestion++;
-	getQuestion( questions[currentQuestion] );
+}
+
+function omedetou() {
+	if (score > 0) {
+		document.getElementById("quiz").innerHTML = "<h1>Félicitations, votre score est de " + score + " points !</h1>" +
+			"<p><form action=\"quiz.php\" method=\"post\"><button type=\"submit\" name=\"chose(" + category + ")\">Réessayer un quiz de cette catégorie</button></form></p>" +
+			"<p><form action=\"quiz.php\" method=\"get\"><button type=\"submit\">Tenter un quiz d'une autre catégorie</button></form></p>";
+	} else {
+		document.getElementById("quiz").innerHTML = "<h1>Votre score est de " + score + " points, et à votre place je serais pas trop fier franchement.</h1>\n" +
+			"<p>(mais c'est pas grave hein, on a tous nos qualités et nos défauts, c'est juste que votre qualité, c'est visiblement pas la culture...)</p>\n" +
+			"<p><form action=\"quiz.php\" method=\"post\"><button type=\"submit\" name=\"chose(" + category + ")\">Réessayer un quiz de cette catégorie</button></form></p>" +
+			"<p><form action=\"quiz.php\" method=\"get\"><button type=\"submit\">Tenter un quiz d'une autre catégorie</button></form></p>";
+	}
 }
 
 // A AMELIORER POUR PRENDRE EN COMPTE LE TEMPS PRIS
@@ -66,12 +79,4 @@ function upScore() {
 	var basepoints = 100;
 	var modifier = 1;
 	score += basepoints*modifier;
-}
-
-function gotoQuiz( catChosen ) {
-	document.getElementById("selectQuiz").style.display = 'none';
-	document.getElementById("quiz").style.display = 'block';
-	category = catChosen;
-	score = 0;
-	//document.write("Category = " + category);
 }
