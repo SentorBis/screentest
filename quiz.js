@@ -7,6 +7,8 @@ var totalQuestion;
 var answered;
 var countDownDate;
 var TIMERSEC = 10;
+var timerini = false;
+var seconds;
 
 
 function startQuiz( questionArray ) {
@@ -26,6 +28,7 @@ function getQuestion( qId ){
 			answered = false;
 			document.getElementById("titre").innerHTML = "Question " + currentQuestion + " (sur " + totalQuestion + ")";
 			document.getElementById("score").innerHTML = "Score: <strong>" + score + " points</strong>";
+			timerini = true;
 			if (currentQuestion == 1) {
 				countDownDate = setCountdown(TIMERSEC);
 			} else countReset();
@@ -38,6 +41,7 @@ function getQuestion( qId ){
 function answer( ans ) {
 	if (!answered) {
 		answered = true;
+		timerini = false; // on arrête le timer
 		if ( ans == '' ) {
 			document.getElementById("timer").innerHTML = "<strong>Temps écoulé !</strong>"; 	
 		} else if ( ans != 'A' ) {
@@ -82,11 +86,11 @@ function omedetou() {
 	}
 }
 
-// A AMELIORER POUR PRENDRE EN COMPTE LE TEMPS PRIS
+// Prend en compte le temps pris
 function upScore() {
 	var basepoints = 100;
 	var modifier = 1;
-	score += basepoints*modifier;
+	score += basepoints*seconds;
 }
 
 // COUNT.JS, ENFIN DANS LE GAME
@@ -104,22 +108,22 @@ var count = setInterval(function() {
     
     var distance = countDownDate - now;
     
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-	if (seconds < 10) {
-		document.getElementById("timer").innerHTML = "Temps restant: <strong>0" + seconds + "s</strong>"; 
-	} else {
-		document.getElementById("timer").innerHTML = "Temps restant: <strong>" + seconds + "s</strong>"; 
+	if (timerini) {
+		if (seconds < 10) {
+			document.getElementById("timer").innerHTML = "Temps restant: <strong>0" + seconds + "s</strong>"; 
+		} else {
+			document.getElementById("timer").innerHTML = "Temps restant: <strong>" + seconds + "s</strong>"; 
+		}
+		
+		if (distance < 0) {
+			answer('');
+		}
 	}
-    
-    if (distance < 0) {
-        clearInterval(count);
-        answer('');
-    }
 }, 500);
 
 function countReset() {
 	countDownDate = setCountdown(TIMERSEC);
 	count();
-	document.write("counting");
 }

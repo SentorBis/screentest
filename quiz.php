@@ -106,6 +106,7 @@
 				print "<p><button type=\"submit\" name=\"chose(" . $row['cat_id'] . ")\">" . $row['cat_name'] . "</button></p>\n";
 			}
 			print "</form>\n";
+			print "<p>Répondez correctement le plus rapidement possible pour gagner plus de points !</p>";
 		}
 		//echo '<script type="text/javascript"> document.getElementById("adminForm").style.display = \'none\'; </script>';
 	  ?></div></center>
