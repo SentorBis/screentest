@@ -29,3 +29,4 @@ INSERT INTO screentest.Category(cat_id, cat_name, description) VALUES (2,'Série
 INSERT INTO screentest.Category(cat_id, cat_name, description) VALUES (3,'Jeu vidéo','La catégorie des jeux vidéo de Pong à Grand Theft Auto V.');
 INSERT INTO screentest.Category(cat_id, cat_name, description) VALUES (4,'Dessins animés','La catégorie des séries animées, dessinées à la main ou animées en 3D.');
 
+INSERT INTO screentest.Question(image, answer0, answer1, answer2, answer3, cat_id, validated) VALUES ('screens/exm01.jpg','Drive','Bullit','Collateral','Reservoir Dogs',1,true);
