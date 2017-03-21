@@ -169,10 +169,11 @@
 					echo "Le fichier ". basename( $_FILES["new_screenshot"]["name"]). " a été uploadé. <br>";
 					
 					$cat = $_POST['category'];
-					$a1 = $_POST['tanswer'];
-					$a2 = $_POST['wanswer1'];
-					$a3 = $_POST['wanswer2'];
-					$a4 = $_POST['wanswer3'];
+					// s'assure qu'on insère des apostrophes doublées pour que le SQL les interprète comme des apostrophes simples
+					$a1 = str_replace("'", "''",$_POST['tanswer']);
+					$a2 = str_replace("'", "''",$_POST['wanswer1']);
+					$a3 = str_replace("'", "''",$_POST['wanswer2']);
+					$a4 = str_replace("'", "''",$_POST['wanswer3']);
 					
 					$sql = "INSERT INTO screentest.Question(image, answer0, answer1, answer2, answer3, cat_id) VALUES ('$target_file', '$a1', '$a2', '$a3', '$a4', '$cat')";
 					$connec->query($sql);

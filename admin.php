@@ -64,16 +64,16 @@
 		if(isset($_POST['submit'])) {
 			
 			$cat = $_POST['category'];
-			$a0 = $_POST['tanswer'];
-			$a1 = $_POST['wanswer1'];
-			$a2 = $_POST['wanswer2'];
-			$a3 = $_POST['wanswer3'];
+			$a0 = str_replace("'", "''",$_POST['tanswer']);
+			$a1 = str_replace("'", "''",$_POST['wanswer1']);
+			$a2 = str_replace("'", "''",$_POST['wanswer2']);
+			$a3 = str_replace("'", "''",$_POST['wanswer3']);
 			$sql = "UPDATE screentest.Question SET cat_id=$cat, answer0='$a0', answer1='$a1', answer2='$a2', answer3='$a3', validated=true WHERE screen_id=" . $_POST['id'];
 
 			if ($connec->query($sql)) {
-				echo "<p>L'entrée " . $_POST['id'] . ", ayant (désormais) pour réponse " . $a0 . ", a été éditée et validée. Elle pourra désormais apparaître dans le quiz.</p>";
+				echo "<p>L'entrée " . $_POST['id'] . ", ayant (désormais) pour réponse " . $_POST['tanswer'] . ", a été éditée et validée. Elle pourra désormais apparaître dans le quiz.</p>";
 			} else {
-				echo "<p>L'entrée " . $_POST['id'] . ", qui devrait avoir pour réponse " . $a0 . ", n'a pas pu être éditée et validée. Dites à l'admin de se sortir les doigts du boule.</p>";
+				echo "<p>L'entrée " . $_POST['id'] . ", qui devrait avoir pour réponse " . $_POST['tanswer'] . ", n'a pas pu être éditée et validée. Dites à l'admin de se sortir les doigts du boule.</p>";
 			}
 			
 			

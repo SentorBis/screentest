@@ -84,11 +84,11 @@
 			print "<button id='A'>Bakemonogatari</button>\n<button id='B'>Sayonara Zetsubou-sensei</button>\n<button id='C'>Tsukuyomi: Full Moon</button>\n<button id='D'>Tsukihime</button>\n\n";*/
 			
 			if ($count > 0) {
-				echo "<script type='text/javascript'>\nvar quizquest = [" . $cat;
+				echo "<script type='text/javascript'>\n\t\tvar quizquest = [" . $cat;
 				foreach ($connec->query($sql) as $row) {
 					echo ", " . $row['screen_id'];
 				}
-				echo "];\nstartQuiz(quizquest);\n</script>";
+				echo "];\n\t\tstartQuiz(quizquest);\n\t</script>";
 			} else {
 				print "<p>Cette catégorie ne comprend aucune question, désolé.</p>";
 			}
