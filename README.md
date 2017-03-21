@@ -4,7 +4,7 @@ par Grégoire Labasse (#6607969)
 
 ## Synopsis
 
-Un site dédié à la génération et à l'exécution de quiz demandant à l'utilisateur de deviner de quel film / série / bande dessinée / etc. provient chaque image qui lui est montrée.
+Un site dédié à la génération et à l'exécution de quiz demandant à l'utilisateur de deviner de quel film / série / jeu vidéo / etc. provient chaque image qui lui est montrée.
 Voici une liste non-exhaustive de fonctionnalités que l'on cherche à introduire dans ce projet :
  - une base de données contenant des images avec des questions pour proposer des quiz à thème triés par catégorie d'image
  - une page pour uploader de nouvelles images  avec les réponses associées
@@ -25,6 +25,11 @@ Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQ
 2. Mettre les fichiers à la racine du serveur
 
 3. Changer les informations de connection à la base de données dans le fichier *query.php* pour correspondre aux votres (notamment 'port=x' où x doit correspondre au port où se situe la BDD PGSQL et 'password=y' où y doit correspondre à votre mot de passe SU pour PGSQL)
+
+## Mode d'emploi
+
+Pour simplement jouer au quiz, suivez les menus ou allez directement sur *quiz.php*. Les questions et les images sont crowd-sourcées donc au départ aucune catégorie n'a de questions.
+Pour ajouter une question allez à la page de soumission de question (*submit.php*). Aucune question n'est acceptée directement pour être utilisée dans les quiz, donc une fois quelques questions soumises, allez à *admin.php* pour valider vos questions.
 
 ## Tests
 
