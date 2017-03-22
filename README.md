@@ -31,6 +31,8 @@ Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQ
 Pour simplement jouer au quiz, suivez les menus ou allez directement sur *quiz.php*. Les questions et les images sont crowd-sourcées donc au départ aucune catégorie n'a de questions.
 Pour ajouter une question allez à la page de soumission de question (*submit.php*). Aucune question n'est acceptée directement pour être utilisée dans les quiz, donc une fois quelques questions soumises, allez à *admin.php* pour valider vos questions.
 
+Si vous voulez pouvoir tester le jeu aussi vite que possible avec des questions déjà incluses, décompressez le fichier *screentesttest.zip* dans un dossier séparé et suivez les instructions présentes dans le *README.txt*.
+
 ## Tests
 
 Pour tester les pages comprenant des fonctions PHP rajoutez "?debug" après l'URL.
