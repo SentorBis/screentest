@@ -24,7 +24,7 @@ Prérequis : un serveur web installé localement (notamment Apache) et PostgreSQ
 
 2. Mettre les fichiers à la racine du serveur
 
-3. Changer les informations de connection à la base de données dans le fichier *query.php* pour correspondre aux votres (notamment 'port=x' où x doit correspondre au port où se situe la BDD PGSQL et 'password=y' où y doit correspondre à votre mot de passe SU pour PGSQL)
+3. Changer les informations de connection à la base de données dans les fichiers *quiz.php*, *getQuestion.php*, *submit.php* et *admin.php* pour correspondre aux votres (notamment 'port=x' où x doit correspondre au port où se situe la BDD PGSQL et 'password=y' où y doit correspondre à votre mot de passe SU pour PGSQL)
 
 ## Mode d'emploi
 
