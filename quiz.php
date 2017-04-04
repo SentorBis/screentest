@@ -69,7 +69,7 @@
 			
 			// NOTE : donner la possibilité de choisir la note plus tard p-ê
 			$limite = 20;
-			$sql = 'SELECT screen_id FROM screentest.Question WHERE cat_id=' . $cat . 'ORDER BY RANDOM() LIMIT ' . $limite;
+			$sql = 'SELECT screen_id FROM screentest.Question WHERE cat_id=' . $cat . ' AND validated=true ORDER BY RANDOM() LIMIT ' . $limite;
 			
 			// calc nombre de lignes (donc de questions)
 			$sel = $connec->prepare($sql);
