@@ -45,9 +45,7 @@
 		}
 	?>
 	
-	    <h1>Vous voulez des quiz qui vous font tenter de deviner d'où proviennent des screenshots tirés aléatoirement d'une base de données à laquelle les utilisateurs peuvent ajouter leurs propres screenshots ?</h1>
-	    <p>1. Vous êtes au bon endroit.<br>
-	    2. Vous cherchez des trucs bizarres.</p>
+	    <h1>Des screenshots.<br>Des quiz.<br>Bienvenue sur ScreenTest.</h1>
 		<form action="quiz.php">
 			<input type="submit" value="Commencer un quiz" class="home" />
 		</form>
