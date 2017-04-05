@@ -66,7 +66,9 @@ function answer( ans ) {
 		currentQuestion++;
 		
 		if (currentQuestion <= totalQuestion) {
-			getQuestion( questions[currentQuestion] );
+			setTimeout(function() {
+				getQuestion( questions[currentQuestion] );
+			}, 1000);
 		} else {
 			setTimeout(function() {
 				omedetou();
